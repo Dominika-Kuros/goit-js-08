@@ -5,10 +5,10 @@ const playerCurrentTime = 'videoplayer-current-time';
 const iframe = document.querySelector('#vimeo-player');
 const player = new Player(iframe);
 
-const pauseTime = () => {
-  localStorage.setItem(playerCurrentTime, seconds);
-};
-player.on('timeupdate', throttle(pauseTime, 1000));
+// const pauseTime = (e) => {
+//   localStorage.setItem(playerCurrentTime, e.seconds);
+// };
+player.on('timeupdate', throttle(player.setCurrentTime, 1000));
 
 
 player.setCurrentTime(JSON.parse(localStorage.getItem(playerCurrentTime)))
