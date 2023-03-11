@@ -9,10 +9,13 @@ const player = new Player(iframe);
 //   localStorage.setItem(playerCurrentTime, e.seconds);
 // };
 
-player.on('timeupdate', throttle(player.setCurrentTime, 1000));
+player.on(
+  'timeupdate',
+  (throttle = e => (localStorage.setItem(playerCurrentTime, e.seconds), 1000))
+);
 
 player
-  .setCurrentTime(JSON.parse(localStorage.getItem(playerCurrentTime)))
+  .setCurrentTime(JSON.parse(localStorage.getItem(playerCurrentTime)) || 0)
   .then(function (seconds) {})
   .catch(function (error) {
     switch (error.name) {
