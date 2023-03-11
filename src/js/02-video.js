@@ -8,7 +8,7 @@ const player = new Player(iframe);
 // const pauseTime = (e) => {
 //   localStorage.setItem(playerCurrentTime, e.seconds);
 // };
-player.on('timeupdate', throttle(player.setCurrentTime, 1000));
+player.on('timeupdate', throttle(player.setCurrentTime(JSON.parse(localStorage.getItem(playerCurrentTime))), 1000));
 
 
 player.setCurrentTime(JSON.parse(localStorage.getItem(playerCurrentTime)))
